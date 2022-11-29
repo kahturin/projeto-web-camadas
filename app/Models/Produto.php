@@ -11,17 +11,15 @@ class Produto extends Model
     use HasFactory;
 
     protected $fillable = [
-        'PRODUTO_NOME', 
-        'PRODUTO_DESC',
-        'PRODUTO_PRECO',
-        'PRODUTO_DESCONTO',
-        'CATEGORIA_ID',
-        'PRODUTO_ATIVO',
+        'nm_produto', 
+        'desc_produto',
+        'vl_produto',
+        'id_categoria',
+        'qtd_produto',
+        'img_produto',
     ];
 
-    protected $table = "PRODUTO";
-
     public function categoria(){
-        return $this->hasMany(Categoria::class, 'id', 'CATEGORIA_ID'); 
+        return $this->hasMany(Categoria::class, 'id', 'id_categoria');
     }
 }
