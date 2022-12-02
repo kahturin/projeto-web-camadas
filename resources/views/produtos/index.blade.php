@@ -10,7 +10,7 @@
         <h1 class="text-center">Produtos</h1>
     </div>
     <div class="row justify-content-end mb-3">
-        <a href="{{ Route('adm.produto.create')}}" class="btn btn-sm btn-primary">Novo Produto</a>
+        <a href="{{ Route('produto.create')}}" class="btn btn-sm btn-primary">Novo Produto</a>
     </div>
     <div class="row">
         <table class="table table-striped">
@@ -34,9 +34,9 @@
                         <td>{{$produto->qtd_produto}}</td>
 
                         <td class="row">
-                            <a href="{{ Route('adm.produto.show', $produto->id) }}" class="btn btn-sm btn-success">Visualizar</a>
-                            <a href="{{ Route('adm.produto.edit', $produto->id) }}" class="btn btn-sm btn-warning">Editar</a>
-                            <form action="{{ route('adm.produto.destroy', $produto->id) }}" method="post">
+                            <a href="{{ Route('produto.show', $produto->id) }}" class="btn btn-sm btn-success">Visualizar</a>
+                            <a href="{{ Route('produto.edit', $produto->id) }}" class="btn btn-sm btn-warning">Editar</a>
+                            <form action="{{ route('produto.destroy', $produto->id) }}" method="post">
                                 @csrf
                                 <button type="submit" class="btn btn-sm btn-danger">Apagar</button>
                             </form>

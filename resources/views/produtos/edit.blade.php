@@ -3,7 +3,7 @@
     <div class="row justify-content-center">
         <h1 class="text-center">Edição de Produto</h1>
     </div>
-    <form method="POST" action="{{ Route('adm.produto.update', $produto->id) }}" enctype="multipart/form-data">
+    <form method="POST" action="{{ Route('produto.update', $produto->id) }}" enctype="multipart/form-data">
         @csrf
         <div class="row justify-content-center mt-3">
             <img class="col-lg-3 col-md-4 col-sm-6 col-xs-8" src="{{ asset('storage/' . $produto->img_produto) }}"
@@ -19,12 +19,12 @@
         </div>
         <div class="form-group">
             <span class="form-label">Preço</span>
-            <input type="number" min="0.00" max="1000.00" name="vl_produto" step="0.01" value="{{ $produto->vl_produto }}"
+            <input type="number" min="0.00" max="10000.00" name="vl_produto" step="0.01" value="{{ $produto->vl_produto }}"
                 class="form-control">
         </div>
         <div class="form-group">
             <span class="form-label">Quantidade</span>
-            <input type="number" min="1" max="1000" name="qtd_produto" step="1" class="form-control"
+            <input type="number" min="1" max="10000" name="qtd_produto" step="1" class="form-control"
                 value="{{ $produto->qtd_produto }}">
         </div>
         <label for="id_categoria">Categoria</label>
@@ -41,7 +41,7 @@
         </div>
         <div class="mt-4 text-center">
             <button type="submit" class="btn btn-success btn-md">Salvar</button>
-            <a href="{{ route('adm.produtos.index') }}" class="btn btn-warning btn-md">Cancelar</a>
+            <a href="{{ route('produtos.index') }}" class="btn btn-warning btn-md">Cancelar</a>
         </div>
     </form>
 @endsection

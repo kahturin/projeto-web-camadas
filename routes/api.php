@@ -16,14 +16,9 @@ use App\Http\Controllers\Api\CategoriaController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
 // Produtos
 Route::get('/produtos', [ProdutoController::class, 'index']);
 Route::get('/produto/{id}', [ProdutoController::class, 'show']);
-Route::get('/produtos/procurar/{s}', [ProdutoController::class, 'search']);
 Route::post('/produto', [ProdutoController::class, 'store']);
 Route::put('/produto/{id}', [ProdutoController::class, 'update']);
 Route::delete('/produto/{id}', [ProdutoController::class, 'destroy']);

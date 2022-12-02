@@ -67,13 +67,6 @@ class ProdutoController extends Controller
         return response()->json(['produto' => $produto, 'categoria' => $categoria->nm_categoria], 200);
     }
 
-    public function search($s)
-    {
-        $produtos = Produto::where('nm_produto', 'like', '%'.$s.'%')->get();
-
-        return response()->json($produtos, 200);
-    }
-
     public function update(Request $request, $id)
     {
         $produto = Produto::findOrFail($id);

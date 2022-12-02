@@ -4,7 +4,7 @@
         <h1 class="text-center">Cadastro de Produto</h1>
     </div>
     <div class="row justify-content-center">
-        <form method="POST" class="col-lg-8 col-sm-10 col-xs-12" action="{{ Route('adm.produto.store') }}"
+        <form method="POST" class="col-lg-8 col-sm-10 col-xs-12" action="{{ Route('produto.store') }}"
             enctype="multipart/form-data">
             @csrf
             <div class="form-group">
@@ -17,7 +17,7 @@
             </div>
             <div class="form-group">
                 <span class="form-label">Preço</span>
-                <input type="number" min="0.00" max="1000.00" name="vl_produto" step="0.01" class="form-control">
+                <input type="number" min="0.00" max="10000.00" name="vl_produto" step="0.01" class="form-control">
             </div>
             <div class="form-group">
                 <span class="form-label">Quantidade</span>
@@ -38,7 +38,7 @@
             </div>
             <div class="mt-4 text-center">
                 <button type="submit" class="btn btn-success btn-md">Salvar</button>
-                <a href="{{ route('dashboard') }}" class="btn btn-warning btn-md">Cancelar</a>
+                <a href="{{ route('produtos.index') }}" class="btn btn-warning btn-md">Cancelar</a>
             </div>
         </form>
     </div>

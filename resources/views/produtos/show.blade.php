@@ -18,10 +18,10 @@
     </div>
     <div class="row justify-content-center mt-3">
         <div class="col-lg-1 col-md-2 col-sm-3 col-xs-4 px-1">
-            <a href="{{ route('adm.produtos.index') }}" class="btn btn-primary btn-md px-3">Voltar</a>
+            <a href="{{ route('produtos.index') }}" class="btn btn-primary btn-md px-3">Voltar</a>
         </div>
         <div class="col-lg-1 col-md-2 col-sm-3 col-xs-4 px1">
-            <a href="{{ Route('adm.produto.edit', $produto->id) }}" class="btn btn-warning btn-md px-3">Editar</a>
+            <a href="{{ Route('produto.edit', $produto->id) }}" class="btn btn-warning btn-md px-3">Editar</a>
         </div>
     </div>
 @endsection
