@@ -7,7 +7,19 @@ use Illuminate\Http\Request;
 
 class CategoriaController extends Controller
 {
-
+    /**
+     * @OA\Get(
+     * path="/api/categorias",
+     * operationId="getCategoriasList",
+     * tags{"Categorias"},
+     * summary = "Retorna a lista de categorias",
+     * description="Retorna o Json de todas as categorias em listagem",
+     * @OA\Response(
+     *      response = 200,
+     *      description = "Operação executada com sucesso"
+     *  )
+     * )
+     */ 
     public function index(){
         return view('categoria.index')->with('categorias', Categoria::all());
     }
@@ -16,6 +28,24 @@ class CategoriaController extends Controller
         return view('categoria.create');
     }
 
+        /**
+     * @OA\Post(
+     * path="/api/categorias",
+     * operationId="StoreCategoria",
+     * tags{"Categorias"},
+     * summary = "Cria uma nova categoria",
+     * description="Retorna o Json com os dados da nova Categoria",
+     * @OA\RequestBody(
+     *      required=true,
+     *      @OA\JsonContent(ref="#/components/schemas/StoreCategoriaRequest")
+     * ),
+     * @OA\Response(
+     *      response =200,
+     *      description = "Operação executada com sucesso"),
+     *      @OA\JsonContent(ref="#/components/schemas/Categoria")
+     *  )
+     * )
+     */ 
     public function store(Request $request){
         $request->validate([
             'nm_categoria' => 'required|string|unique:categorias,nm_categoria'
@@ -28,6 +58,29 @@ class CategoriaController extends Controller
         return redirect()->route('categoria.index');
     }
 
+            /**
+     * @OA\Get(
+     * path="/api/categoria/{id}",
+     * operationId="getCategoriaById",
+     * tags{"Categorias"},
+     * summary = "Retorna a informação de uma categoria",
+     * description="Retorna o Json da categoria requisitada",
+     * @OA\Parameter(
+     *      name ="id",
+     *      description = "Id da Categoria",
+     *      required =true,
+     *      in="path",
+     *  @OA\Schema(
+     *      type="integer"
+     *  )
+     * ),
+     *      
+     * @OA\Response(
+     *      response =200,
+     *      description = "Operação executada com sucesso")
+     *  )
+     * )
+     */ 
     public function show($idCategoria){
         $categoria = Categoria::findOrFail($idCategoria);
 
@@ -39,7 +92,34 @@ class CategoriaController extends Controller
 
         return view('categoria.edit')->with('categoria', $c);
     }
-
+    
+                /**
+     * @OA\Put(
+     * path="/api/categoria/{id}",
+     * operationId="updateCategoria",
+     * tags{"Categorias"},
+     * summary = "Atualiza categoria existente",
+     * description="Retorna o Json da categoria atualizada",
+     * @OA\Parameter(
+     *      name ="id",
+     *      description = "Id da Categoria",
+     *      required =true,
+     *      in="path",
+     *  @OA\Schema(
+     *      type="integer"
+     *  )
+     * ),
+     * @OA\RequestBody(
+     *      required= true,
+     *      @OA\JsonContent(ref="#/components/schemas/StoreCategoriaRequest")
+     * ),
+     *      
+     * @OA\Response(
+     *      response =200,
+     *      description = "Operação executada com sucesso")
+     *  )
+     * )
+     */ 
     public function update(Request $request, $id){
         $c = Categoria::findOrFail($id);
 
@@ -57,6 +137,30 @@ class CategoriaController extends Controller
 
         return redirect()->route('categoria.index');
     }
+
+                    /**
+     * @OA\Delete(
+     * path="/api/categoria/{id}",
+     * operationId="deleteCategoria",
+     * tags{"Categorias"},
+     * summary = "apaga uma categoria existente",
+     * description="apaga uma categoria existente e nao há retorno de dados",
+     * @OA\Parameter(
+     *      name ="id",
+     *      description = "Id da Categoria",
+     *      required =true,
+     *      in="path",
+     *  @OA\Schema(
+     *      type="integer"
+     *  )
+     * ),   
+     * @OA\Response(
+     *      response =200,
+     *      description = "Operação executada com sucesso")
+     * @OA\JsonContent()
+     *  )
+     * )
+     */ 
 
     public function destroy($id){
         $categoria = Categoria::findOrFail($id);
