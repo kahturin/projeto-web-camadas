@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Categoria;
 use App\Models\Produto;
+use App\Models\Fabricante;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 

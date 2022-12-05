@@ -17,6 +17,7 @@ class CreateProdutosTable extends Migration
             $table->integer('qtd_produto');
             $table->integer('id_categoria')->references('categorias')->on('id');
             $table->string('img_produto')->nullable();
+            $table->foreignID('fabricante_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }
