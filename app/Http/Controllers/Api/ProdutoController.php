@@ -17,6 +17,7 @@ class ProdutoController extends Controller
         $arrayProdutos = [];
         foreach($produtos as $p ){
             $categoria = Categoria::findOrFail($p->id_categoria);
+            $fabricante = Fabricante::findOrFail($p->fabricante_id);
             $prod = [
                 'nm_produto' => $p->nm_produto,
                 'id' => $p->id,
@@ -26,6 +27,7 @@ class ProdutoController extends Controller
                 'id_categoria' => $p->id_categoria,
                 'img_produto' => $p->img_produto,
                 'nm_categoria' => $categoria->nm_categoria,
+                'nm_fabricante' => $fabricante->nm_fabricante,
             ];
 
             array_push($arrayProdutos, $prod);
@@ -42,6 +44,7 @@ class ProdutoController extends Controller
             'vl_produto' => 'required',
             'qtd_produto' => 'required',
             'id_categoria' => 'required',
+            'fabricante_id' =>'required',
         ]);
 
         $produto = Produto::create([
@@ -50,6 +53,7 @@ class ProdutoController extends Controller
             'vl_produto' => $campos['vl_produto'],
             'qtd_produto' => $campos['qtd_produto'],
             'id_categoria' => $campos['id_categoria'],
+            'fabricante_id' => $campos['fabricante_id'],
         ]);
 
         if(empty($produto)){
@@ -78,6 +82,7 @@ class ProdutoController extends Controller
                 'desc_produto' => 'required|string',
                 'vl_produto' => 'required',
                 'id_categoria' => 'required',
+                'fabricante_id' =>'required',
             ]);
         } else {
             $campos = $request->validate([
@@ -85,6 +90,7 @@ class ProdutoController extends Controller
                 'desc_produto' => 'required|string',
                 'vl_produto' => 'required',
                 'id_categoria' => 'required',
+                'fabricante_id' =>'required',
             ]);
         }
 
