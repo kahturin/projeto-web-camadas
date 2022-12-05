@@ -24,7 +24,6 @@ class ProdutoController extends Controller
                 'vl_produto' => $p->vl_produto,
                 'qtd_produto' => $p->qtd_produto,
                 'id_categoria' => $p->id_categoria,
-                'img_produto' => $p->img_produto,
                 'nm_categoria' => $categoria->nm_categoria,
             ];
 
@@ -32,6 +31,13 @@ class ProdutoController extends Controller
         };
 
         return response()->json($arrayProdutos, 200);
+    }
+
+    public function search($s)
+    {
+        $produtos = Produto::where('nm_produto', 'like', '%'.$s.'%')->get();
+
+        return response()->json($produtos, 200);
     }
 
     public function store(Request $request)

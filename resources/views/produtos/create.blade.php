@@ -31,11 +31,6 @@
                     @endforeach
                 </select>
             </div>
-            <div class="form-group">
-                <label for="img_produto" class="form-label">Imagem Produto</span>
-                    <input type="file" id="img_produto" name="img_produto" placeholder="Inserir imagem do produto"
-                        class="form-control-file">
-            </div>
             <div class="mt-4 text-center">
                 <button type="submit" class="btn btn-success btn-md">Salvar</button>
                 <a href="{{ route('produtos.index') }}" class="btn btn-warning btn-md">Cancelar</a>

@@ -1,10 +1,6 @@
 @extends('layouts.dash')
 @section('corpo-dash')
     <div class="row justify-content-center mt-3">
-        <img class="col-lg-3 col-md-4 col-sm-6 col-xs-8" src="{{ asset('storage/' . $produto->img_produto) }}"
-            alt="Imagem do produto {{ $produto->nm_produto }}">
-    </div>
-    <div class="row justify-content-center mt-3">
         <div class="justify-content-start">
             <h2>{{ $produto->nm_produto }}</h2>
             <span class="h4 d-block">R$ {{ $produto->vl_produto }}</span>

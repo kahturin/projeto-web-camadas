@@ -13,7 +13,6 @@ class Categoria extends Model
         'nm_categoria',
     ];
 
-
     public function produtos(){
         return $this->hasMany(Produto::class, 'id_categoria', 'id');
     }

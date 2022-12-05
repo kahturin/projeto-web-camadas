@@ -5,10 +5,6 @@
     </div>
     <form method="POST" action="{{ Route('produto.update', $produto->id) }}" enctype="multipart/form-data">
         @csrf
-        <div class="row justify-content-center mt-3">
-            <img class="col-lg-3 col-md-4 col-sm-6 col-xs-8" src="{{ asset('storage/' . $produto->img_produto) }}"
-            alt="Imagem do produto {{ $produto->nm_produto }}">
-        </div>
         <div class="form-group">
             <span class="form-label">Nome</span>
             <input type="text" name="nm_produto" class="form-control" value="{{ $produto->nm_produto }}">
@@ -34,11 +30,6 @@
                 <option value="{{ $c->id }}">{{ $c->nm_categoria }}</option>
             @endforeach
         </select>
-        <div class="form-group">
-            <label for="img_produto" class="form-label">Alterar Imagem Produto</span>
-                <input type="file" id="img_produto" name="img_produto" placeholder="Inserir imagem do produto"
-                    class="form-control-file">
-        </div>
         <div class="mt-4 text-center">
             <button type="submit" class="btn btn-success btn-md">Salvar</button>
             <a href="{{ route('produtos.index') }}" class="btn btn-warning btn-md">Cancelar</a>
